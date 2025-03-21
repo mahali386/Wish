@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .progress {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 8px solid transparent;
+            border-top: 8px solid white;
+            animation: rotate 5s linear forwards;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="progress"></div>
+        <div class="circle" id="countdown">5</div>
+    </div>
+
+    <script>
+        let count = 5;
+        let countdownElement = document.getElementById("countdown");
+
+        let timer = setInterval(() => {
+            count--;
+            countdownElement.innerText = count;
+
+            if (count === 0) {
+                clearInterval(timer);
+                window.location.href = "newpage.html"; // Redirect to another page
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
